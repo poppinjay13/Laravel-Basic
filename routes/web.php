@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('100446/home');
+});
+Route::get('/student', function () {
+    return view('100446/student');
+});
+Route::get('/fees', function () {
+    return view('100446/fees');
 });
