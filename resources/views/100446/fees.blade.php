@@ -21,14 +21,17 @@
 
   <!-- Page Content -->
 <center>
-<table style="height: 100vh;">
-	<tbody>
-		<tr>
-			<td><a href="/student" type="button" class="btn btn-primary btn-lg">Register User</a></td>
-			<td><a href="/fees" type="button" class="btn btn-primary btn-lg">Pay Fees</a></td>
-		</tr>
-	</tbody>
-</table>
+<div style = "padding-top: 250px;">
+<form style = "text-align:left;width:20%;">
+Student's Admission Number:<br>
+  <input type = "text" name = "student_no" id = "student_no" placeholder = " Student Number" required/><br>
+  <br>
+Payment Amount in Ksh:<br>
+  <input type = "text" name = "amount" id = "amount" placeholder = " Amount Paid" required/><br>
+  <br>
+  <input type = "hidden" name = "date" id = "date" value = "date" /><br>
+</form>
+</div>
 </center>
   <!-- Bootstrap core JavaScript -->
   <script src= {{ asset('js/jquery/jquery.slim.min.js') }}></script>
