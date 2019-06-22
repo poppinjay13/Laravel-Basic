@@ -37,7 +37,7 @@ Payment Amount in Ksh:<br>
 </tr>
 @foreach ($fees as $payment)
 <tr>
-<td>{{ $payment->student_no }}</td>
+<td>{{ $payment->student_id }}</td>
 <td>{{ $payment->amount }}</td>
 <td>{{ $payment->created_at }}</td>
 </tr>
