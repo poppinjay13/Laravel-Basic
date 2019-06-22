@@ -32,7 +32,7 @@
       @if(count($students) >= 0)
         @foreach($students as $student)
         <tr>
-          <td>{{$student->student_id}}</td>
+          <td>{{$student->id}}</td>
           <td>{{$student->full_name}}</td>
           <td>{{$student->date_of_birth}}</td>
           <td>{{$student->address}}</td>

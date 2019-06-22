@@ -32,8 +32,8 @@ class SearchController extends Controller
             'student_no' => 'required'
         ]);
         $std_id = $request->input('student_no');
-        $students = Students::where('student_id',$std_id)->get();
-        $sum = Fees::where('student_id',$std_id)->sum('amount');
+        $students = Students::where('id',$std_id)->get();
+        $sum = Fees::where('student_no',$std_id)->sum('amount');
 
         return view('100446/search',['students'=>$students,'fees'=>$sum]);
     }

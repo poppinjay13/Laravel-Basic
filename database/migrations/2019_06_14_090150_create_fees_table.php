@@ -14,8 +14,8 @@ class CreateFeesTable extends Migration
     public function up()
     {
         Schema::create('fees', function (Blueprint $table) {
-            $table->bigIncrements('transaction_id')->unique();
-            $table->string('student_id');
+            $table->bigIncrements('fees_id')->unique();
+            $table->string('student_no');
             $table->double('amount');
             $table->date('created_at');
             $table->date('updated_at');
