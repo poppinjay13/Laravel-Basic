@@ -18,6 +18,8 @@ class CreateStudentsTable extends Migration
             $table->string('full_name');
             $table->date('date_of_birth');
             $table->string('address');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

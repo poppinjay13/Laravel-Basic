@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>100446 - HOME</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href= {{ asset('css/bootstrap.min.css') }} rel="stylesheet">
-
+    @include('includes.head')
 </head>
-
 <body>
 
-  <!-- Navigation -->
+    <header>
+        @include('includes.header')
+    </header>
 
-  <!-- Page Content -->
 <center>
-<div style = "padding-top: 250px;">
-<form style = "text-align:left;width:20%;">
+<div style = "padding-top: 20px;">
+<form style = "text-align:left;width:20%;" method="POST" action="students">
+@csrf
 Full Names:<br>
-  <input type = "text" name = "full_name" id = "full_name" placeholder = " Full Names" /><br>
+  <input type = "text" name = "full_name" id = "full_name" placeholder = " Full Names" required/><br>
   <br>
 Date of Birth:<br>
-  <input type = "date" name = "dob" id = "dob" placeholder = " Date of Birth" /><br>
+  <input type = "date" name = "dob" id = "dob" placeholder = " Date of Birth" required/><br>
   <br>
 Home Address:<br>
-  <input type = "text" name = "address" id = "address" placeholder = " Address" /><br>
+  <input type = "text" name = "address" id = "address" placeholder = " Address" required/><br>
+  <br>
+  <input type="submit" class="btn btn-primary" value="Create New Student" />
 </form>
 </div>
 </center>
+<br>
+<hr>
+<br>
+<center>
+<h2>Existing Students</h2><br><br>
+<table style="width:90%;">
+<tr>
+<td>Student Number</td>
+<td>Student Name</td>
+<td>Date of Birth</td>
+<td>Address</td>
+</tr>
+@foreach ($students as $student)
+<tr>
+<td>{{ $student->student_no }}</td>
+<td>{{ $student->full_name }}</td>
+<td>{{ $student->date_of_birth }}</td>
+<td>{{ $student->address }}</td>
+</tr>
+@endforeach
+</table>
+</center>
   <!-- Bootstrap core JavaScript -->
-  <script src= {{ asset('js/jquery/jquery.slim.min.js') }}></script>
-  <script src= {{ asset('js/bootstrap.bundle.min.js') }}></script>
+  <script src= "{{ asset('js/jquery/jquery.slim.min.js') }}"></script>
+  <script src= "{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 

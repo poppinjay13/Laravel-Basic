@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Search;
 use App\Fees;
-use DB;
+use App\Students;
 use Illuminate\Http\Request;
 
-class FeesController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class FeesController extends Controller
      */
     public function index()
     {
-        $fees = DB::select('select * from fees');
-        return view('100446/fees',['fees'=>$fees]);
+        //
+        return view('100446/search');
     }
 
     /**
@@ -24,19 +25,17 @@ class FeesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function search(Request $request)
     {
-        $this->validate(request(),[
-            'student_no' => 'required',
-            'amount' => 'required'
-        ]);
-        $fees= new Fees;
-        $fees->student_no = $request->input('student_no');
-        $fees->amount = $request->input('amount');
-        $fees->save();
         //
-        $fees = DB::select('select * from fees');
-        return view('100446/fees',['fees'=>$fees]);
+        $request->validate([
+            'student_no' => 'required'
+        ]);
+        $std_id = $request->input('student_no');
+        $students = Students::where('student_no',$std_id)->get();
+        $sum = Fees::where('student_no',$std_id)->sum('amount');
+
+        return view('100446/search',['students'=>$students,'fees'=>$sum]);
     }
 
     /**
@@ -53,10 +52,10 @@ class FeesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fees  $fees
+     * @param  \App\Search  $search
      * @return \Illuminate\Http\Response
      */
-    public function show(Fees $fees)
+    public function show(Search $search)
     {
         //
     }
@@ -64,10 +63,10 @@ class FeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fees  $fees
+     * @param  \App\Search  $search
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fees $fees)
+    public function edit(Search $search)
     {
         //
     }
@@ -76,10 +75,10 @@ class FeesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fees  $fees
+     * @param  \App\Search  $search
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fees $fees)
+    public function update(Request $request, Search $search)
     {
         //
     }
@@ -87,10 +86,10 @@ class FeesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fees  $fees
+     * @param  \App\Search  $search
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fees $fees)
+    public function destroy(Search $search)
     {
         //
     }

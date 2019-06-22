@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Students;
+use DB;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -14,7 +15,9 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        $students = DB::select('select * from students');
+        //dd($students);
+        return view('100446/student',['students'=>$students]);
     }
 
     /**
@@ -22,9 +25,21 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function insert(Request $request)
     {
+        $this->validate(request(),[
+            'full_name' => 'required',
+            'dob' => 'required',
+            'address' => 'required'
+        ]);
+        $student= new Students;
+        $student->full_name = $request->input('full_name');
+        $student->date_of_birth = $request->input('dob');
+        $student->address = $request->input('address');
+        $student->save();
         //
+        $students = DB::select('select * from students');
+        return view('100446/student',['students'=>$students]);
     }
 
     /**
