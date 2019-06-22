@@ -5,5 +5,5 @@
 <title>Laravel - 100446</title>
 
 <!-- load bootstrap from a cdn -->
-<!--link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/css/bootstrap-combined.min.css" -->
-<link href= {{ asset('css/bootstrap.min.css') }} rel="stylesheet">
+<!--link href= {{ asset('css/bootstrap.min.css') }} rel="stylesheet" -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
