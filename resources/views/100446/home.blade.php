@@ -14,7 +14,7 @@
         <table style="height: 90vh;">
         	<tbody>
         		<tr>
-        			<td><a href="students" type="button" class="btn btn-primary btn-lg">Register User</a></td>
+        			<td><a href="students" type="button" class="btn btn-primary btn-lg">Register Student</a></td>
         			<td><a href="fees" type="button" class="btn btn-primary btn-lg">Pay Fees</a></td>
         		</tr>
         	</tbody>
